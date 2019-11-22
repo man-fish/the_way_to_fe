@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            console(){
+                console.log("调用父类的构造函数"+this.name+this.age)
+            }
+        }  
+        
+        let wangbo = new Person("wangbo",18)
+
+        wangbo.console()
+
+        class Dogperson extends Person{
+            constructor(name,age,salary){
+                super(name,age)
+                this.salary = salary
+            }
+            console(){
+                console.log("调用子类的构造函数"+this.name+this.age+this.salary)
+            }
+        }
+
+        let qinyunlong = new Dogperson("秦云龙",22,50)
+        qinyunlong.console()
+
+        console.log(qinyunlong)
+        console.log(Dogperson)
+    </script>
+</body>
+</html>

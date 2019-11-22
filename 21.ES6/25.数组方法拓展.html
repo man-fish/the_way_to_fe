@@ -1,0 +1,26 @@
+<script>
+    function dis(){
+        /**
+         * 将伪数组转化为真数组
+         * */
+        Array.from(arguments).forEach((item,index)=>{
+            console.log(item)
+            console.log(index)
+        })
+    }
+    dis(1,5,7,6,2)
+
+    let arr2 = Array.of(1,'sda',true,2112)
+
+    console.log(arr2)
+
+    let min = arr2.find(function(item,index){
+            return item == true
+    })
+    console.log(min)
+
+    let min2 = arr2.findIndex(function(item,index){
+            return item == true
+    })
+    console.log(min2)
+</script>

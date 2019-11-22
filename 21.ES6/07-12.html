@@ -1,0 +1,181 @@
+<button id="btn1">normal</button>
+<button id="btn2">arrow</button>
+<button id="btn3">Onormal</button>
+<button id="btn4">Oarrow</button>
+<script>
+/**
+  * 解构赋值
+  */
+  (function(){
+	let obj = {
+			name:"wangbo",
+			age:7
+	}
+	function split({name,age}){
+		console.log(name)
+		console.log(age)
+	}
+
+	function split2(req){
+		//let{name.age,sex} = req.query;
+		//console.log(name)
+		//console.log(age)
+		//console.log(sex)
+	}
+	split(obj)
+
+	let{name,age} = obj;
+	console.log(name+age)
+	console.log(1)
+	
+	let[a,b,c] = [1,5,7]
+	console.log(a+b+c)
+	
+	
+	function view(){
+		console.log(obj)
+	}
+	view();
+  })()
+  	console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+</script>
+<script>
+/**
+  * 模板字符串
+  */
+	(()=>{
+		let name = 'wangbo';
+		let obj = {
+			'name':'bowang'
+		}
+		let str = `${name}${obj.name}`
+		console.log(str)
+	})()
+	console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+</script>
+<script>
+/**
+  * 对象属性简写
+  */
+	(function(){
+		let name = 'wangbo'
+		var obj = {
+			name,
+			csl(){
+				console.log(this.name)
+			}
+		}
+		obj.csl();
+	})()
+	console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+</script>
+<script>
+/**
+  * 箭头函数
+  */
+	( window => {
+			let eat = ()=> console.log("吃吃吃吃")
+			//定义参数eat
+			let out = fn => fn
+			//这里只有一个参数括号可以省略，后面只有一行且没有括号则直接返回fn
+			window.eat = out(eat)
+	})(window)
+	eat()
+	console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+</script>
+<script>
+/**
+  * 箭头函数this
+  * 不再是当前的意思
+  *	有外层函数的时候this就是外层函数的this。
+  * 没有外层函数的时候就是window。
+  */
+	let btn1 = document.getElementById('btn1')
+	let btn2 = document.getElementById('btn2')
+	let btn3 = document.getElementById('btn3')
+	let btn4 = document.getElementById('btn4')
+	
+	btn1.onclick = function(){
+		console.log(this)
+	}
+	btn2.onclick = ()=>{
+		console.log(this)
+	}
+	var obj = {
+		Onormal : function(){
+			btn3.onclick = () => {
+				console.log(this)
+			}
+		},
+		//外层函数的this是obj，内层函数的this就是obj
+		Oarrow : ()=>{
+			btn4.onclick = ()=>{
+				console.log(this)
+			}
+		}
+		//外层函数也是括号函数的时候，就去找外层函数的this指向
+		//外层函数没有外层函数，外层函数的this就是window，所以内层函数的this也是window
+	}
+	obj.Onormal();
+	obj.Oarrow();
+	console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+</script>
+<script>
+/**
+  * 形参默认值（对象）
+  */
+    function arg(x='default',callback=()=>{console.log(x)}){
+		callback();
+    }
+    arg()
+    //形参默认值为回调函数时，可以传入其他形参或实参。
+    function Dog(name = 'wangbo'){
+	  this.name = name;
+	  this.console = function(){console.log(this.name)}
+    }
+    let tidy = new Dog()
+    tidy.console()
+    //针对对象的使用方法。
+</script>
+<script>
+/**
+  * arguments伪数组不能调用数组的方法。
+  */
+	function arg(num){
+		console.log(arguments)
+		if(num==10){
+			console.log("递归完成结果为"+num)
+			return
+		}
+		num++
+		arguments.callee(num)
+		//arguments.callee(1) = arg(1) (用于递归操作)
+	}
+	arg(1)
+</script>
+<script>
+/**
+  * 三点运算符（真数组）
+  * 做参数
+  */
+	function three(a,...value){
+		value.forEach(function(index,item){
+			console.log(index+" "+item)
+		})
+	}
+	three(1,7,9,5)
+	//7,9,5
+</script>
+<script>
+/**
+  * 三点运算符（真数组）
+  * 搞数组
+  */
+	let arrOut = [1,6]
+	let arrIn = [2,3,4,5]
+	console.log(...arrIn)
+	//三点运算符会自动帮我们把数组拆开。
+	let arr = [1,...arrIn,6]
+	//用于数组拼接
+	console.log(arr)
+</script>

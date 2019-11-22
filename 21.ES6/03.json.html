@@ -1,0 +1,13 @@
+<script>
+        /**
+          *json可以使对象也可以是数组（json对象和数组）
+          */
+        var json = [{
+            name : 'wangbo',
+            age : 6
+        }]
+        var str = JSON.stringify(json)
+        console.log(str)
+        var obj = JSON.parse(str)
+        console.dir(obj)
+</script> 

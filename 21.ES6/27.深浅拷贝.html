@@ -1,0 +1,38 @@
+<script>
+    /**
+     * 浅拷贝和深拷贝（深度克隆）
+     * 浅拷贝：拷贝之后会生成一份新数据不会影响原数据。
+     * 深拷贝：不是拷贝而是引用，修改“拷贝”的数据会影响原数据的值。
+     * */
+    //数组和对象的直接赋值都是浅拷贝。
+    let arr4 = [1,2,3]
+    let arr3 = arr4
+    arr4[0] = 2
+    console.log(arr3) //[2,2,3]
+    let obj5 = {name:"jack"}
+    let obj4 = obj5
+    obj5.name = "bob"
+    console.log(obj4)
+    //concat也是浅拷贝
+    let arr = [{name:"jack"},1]
+    let arr2 = arr.concat()
+    arr2[1] = 2
+    arr[0].name = "bob"
+    console.log(arr)
+    //深拷贝（aasign函数）
+    let obj1 = {
+        name:"jack"
+    }
+    let obj2 = {
+        age:7
+    }
+    let obj3 = Object.assign(obj2,obj1)
+    obj3.name = "bob"
+    obj1.name = "ree"
+    console.log(obj3)
+    console.log(obj1)
+    //深拷贝（JSON二次转换）
+    let trueobj = JSON.parse(JSON.stringify(obj1))
+    obj1.name="foo"
+    console.log(trueobj)
+</script>

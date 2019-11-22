@@ -1,0 +1,22 @@
+<script>
+        // 可以看出来仍然不是很清晰的回调解决方式
+        let promise = new Promise(function(resolve){
+            setTimeout(function(){
+                console.log("I")
+                resolve("love")
+            },1000)
+        })
+        promise.then((data)=>{
+    
+            let promise2 = new Promise((resolve)=>{
+                setTimeout(()=>{
+                    console.log("you")
+                    resolve("xu")
+                },2000)
+            })
+    
+            promise2.then((data)=>{
+                console.log(data)
+            })
+        })
+    </script>

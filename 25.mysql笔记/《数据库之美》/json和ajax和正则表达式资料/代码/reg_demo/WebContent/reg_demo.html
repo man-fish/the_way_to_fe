@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function valid(){
+	//定义一个正则表达式
+	//var reg = /^[a]$/;
+	//定义一个正则表达式
+	//var reg = new RegExp('^[^abc]$');
+	//表示从小a到z大A到Z任意的一位
+	//var reg = new RegExp('^[a-zA-Z]$');
+	//var reg = new RegExp('^[a-zA-Z0-9]$');
+	//var reg = new RegExp('^[a-zA-Z0-9_]$');
+	//var reg = new RegExp('^[0-9_]$');
+	//var reg = new RegExp('^.$');
+	/* var reg = new RegExp('^ab$');
+	var reg = new RegExp('^[ab]$'); */
+	//var reg = new RegExp('^\\w$');
+	//建议使用这种方式
+	//var reg = /^\w$/;
+	//var reg = /^\W$/;
+	//var reg = /^\s$/;
+	//var reg = /^\S$/;
+	//var reg = /^\d$/;
+	//var reg = /^\d?$/;
+	//var reg = /^\d*$/;
+	//var reg = /^\d+$/;
+	//var reg = /^\d{3}$/;
+	//var reg = /^\d{3,}$/;
+	//var reg = /^\d{3,5}$/;
+	//控制电话号0431-12345678
+	//使用()可以吧一组字符统一控制数量
+	//var reg = /^(0431-)?\d{8}$/
+	//特殊的字符!$^&*()\+?.
+	//var reg = /^\.$/
+	//var reg = /^[.]$/
+	//alert(typeof reg);
+	var uname = document.getElementById('username').value;
+	//学习正则表达式，只学习test方法
+	//(010)88886666，或022-22334455，或02912345678
+	//var reg = /^(\(0\d{2}\)\d{8})|(0\d{2}-\d{8})$/
+	//var reg = /^(\(0\d{2}\))|(0\d{2}-?)\d{8}$/
+	//如果使用|我们需要拿括号给()
+	//var reg = /^((\(0\d{2}\))|(0\d{2}-?))$/
+	//第一组是1-223,第二组是0-255，第二组是0-255，第二组是1-255
+	//223.255.255.255
+	//var reg = ((2[0-2]\d|22[0-3]|[01]?\d\d?)\.)((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){2}(2[0-4]\d|25[0-5]|[01]?\d\d?)。
+	//var reg = /^((2[0-1]\d|22[0-3]|[01]?[1-9]\d?|10\d)\.)((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){2}(2[0-4]\d|25[0-5]|[01]?[1-9]\d?|10\d)$/;
+	//var reg = /^[\u4e00-\u9fa5]{2,5}$/
+		var reg = /^[\x22]$/
+		var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+	if(reg.test(uname)){
+		alert("合法");
+	}else{
+		alert("不合法");
+	}
+}
+</script>
+</head>
+<body>
+用户名：<input type="text" name="username" id="username">
+<input  value="点击" type="button" onclick="valid()">
+</body>
+</html>

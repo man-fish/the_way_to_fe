@@ -1,0 +1,27 @@
+      ul{   
+            padding: 0px;
+            position: fixed;
+            top: 50px;
+            right: 0px;
+            /*margin: 0 auto;*/
+            z-index: 1000000000000000000;
+            width:fit-content;
+            list-style: none;
+            background: white;
+      }
+      .mditor-mini-help{
+            z-index: 1000000000000000001;
+      }
+      li{
+            background: white;
+      }
+      li>button{
+            /*float: left;*/
+            margin: 2px 20px;
+            height: 40px;
+            width: 40px;
+      }
+      textarea{
+            height: 600px;
+            resize: none;
+      }

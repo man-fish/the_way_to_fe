@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://www.cnblogs.com/vanblog/p/8671025.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+    <title>JsRender 前端渲染模板基础学习 - 天空划落 - 博客园</title>
+<meta property="og:description" content="JsRender前端渲染模板 使用模板，可以预先自定义一些固定格式的HTML标签，在需要显示数据时，再传入真实数据组装并展示在Web页中；避免了在JS中通过“+”等手动分割、连接字符串的复杂过程；针对">
+    <link type="text/css" rel="stylesheet" href="./JsRender 前端渲染模板基础_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./JsRender 前端渲染模板基础_files/bundle-gray.css">
+<link type="text/css" rel="stylesheet" href="./JsRender 前端渲染模板基础_files/377301.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./JsRender 前端渲染模板基础_files/bundle-gray-mobile.css">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/vanblog/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/vanblog/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/vanblog/wlwmanifest.xml">
+    <script src="./JsRender 前端渲染模板基础_files/osd.js.下载"></script><script src="./JsRender 前端渲染模板基础_files/amp4ads-host-v0.js.下载"></script><script src="./JsRender 前端渲染模板基础_files/pubads_impl_rendering_313.js.下载"></script><script async="" src="./JsRender 前端渲染模板基础_files/analytics.js.下载"></script><script type="text/javascript" src="./JsRender 前端渲染模板基础_files/encoder.js.下载"></script><script src="./JsRender 前端渲染模板基础_files/jquery-2.2.0.min.js.下载"></script>
+    <script>var currentBlogId=377301;var currentBlogApp='vanblog',cb_enable_mathjax=false;var isLogined=false;</script>
+    <script src="./JsRender 前端渲染模板基础_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="./JsRender 前端渲染模板基础_files/f.txt" as="script"><script type="text/javascript" src="./JsRender 前端渲染模板基础_files/f.txt"></script><script src="./JsRender 前端渲染模板基础_files/pubads_impl_313.js.下载" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-32/html/container.html"></head>
+<body>
+<a name="top"></a>
+
+
+<!--done-->
+<div id="banner"><div id="bnr_pic">
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/vanblog/">天空划落</a><br>
+	</div>
+	<div class="headerDis"></div>
+</div>
+</div></div>
+<div id="main">
+	<!-- left starts -->
+	<div id="left">
+	<div id="left_border">
+		<div id="mystats">
+			<br>
+				<div id="blog_stats">
+<!--done-->
+<div class="blogStats">
+随笔- 18&nbsp;
+文章- 0&nbsp;
+评论- 4&nbsp;
+
+</div></div>
+			
+		</div>
+		<div id="mylinks">
+<!--done-->
+<a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a>&nbsp;&nbsp;<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/vanblog/">首页</a>&nbsp;&nbsp;<a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;&nbsp;<a id="MyLinks1_NewArticleLink" class="menu" href="https://www.cnblogs.com/EnterMyBlog.aspx?NewArticle=1">新文章</a>&nbsp;&nbsp;<a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E5%A4%A9%E7%A9%BA%E5%88%92%E8%90%BD">联系</a>&nbsp;&nbsp;<a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a>&nbsp;&nbsp;<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/vanblog/rss">订阅</a>&nbsp;<a id="blog_nav_rss_image" href="https://www.cnblogs.com/vanblog/rss"><img src="./JsRender 前端渲染模板基础_files/xml.gif" alt="订阅"></a></div>
+		<div id="topics">
+			
+        <div id="post_detail">
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/vanblog/p/8671025.html">JsRender 前端渲染模板基础学习</a>
+	</div>
+	<div id="cnblogs_post_body" class="blogpost-body"><p><strong>JsRender<strong>前端渲染模板</strong></strong></p>
+<p>使用模板，可以预先自定义一些固定格式的HTML标签，在需要显示数据时，再传入真实数据组装并展示在Web页中；避免了在JS中通过“+”等手动分割、连接字符串的复杂过程；针对高性能和纯字符串渲染进行了优化；无需依赖DOM和jQuery；</p>
+<p><strong>优先使用场景：</strong>元素重复出现；动态加载数据，并前端显示；</p>
+<p><strong>JsRender使用</strong></p>
+<ol>
+<li>引入js</li>
+<li>定义模板</li>
+<li>准备好要显示的数据 json对象</li>
+<li>编译成元素：document.getElementById(“XXX”).render(data); 或 $("#XXX").render(data);</li>
+<li>通过容器元素的append、before、after显示</li>
+</ol>
+<p>一、<strong>基本语法</strong></p>
+<ul>
+<li>原始赋值： {{:属性名}}，显示原始数据</li>
+<li>转码赋值： {{&gt;属性名}}，显示HTML编码后的数据，让数据原样输出</li>
+<li>控制语句可嵌套使用：
+<ul>
+<li>判断： {{if 表达式}} … {{else}} … {{/if}}</li>
+<li>循环： {{for 数组}} … {{/for}}</li>
+</ul>
+</li>
+<li>其它进阶
+<ul>
+<li>模板嵌套，使用：{{for tmpl="#另一个模板" /}}</li>
+<li>转换器 $.views.converters()定义，使用：{{func:属性名}}</li>
+<li>帮助方法 $.views.helpers()定义，使用：{{if ~func(arg1, arg2, ...)}}</li>
+<li>自定义标签 $.views.tags()</li>
+</ul>
+</li>
+</ul>
+<p><strong>基本变量标签 {{:name}}</strong></p>
+<p>基本变量需要使用冒号 ":" 作为标识，一般是简单对象的某个属性。比如传入一个简单对象data</p>
+<p>引入jquery-3.2.1.min.js 和&nbsp;jsrender.min.js</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">src</span><span style="color: #0000ff">="/Scripts/jquery-3.2.1.min.js"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+<span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">src</span><span style="color: #0000ff">="/Content/jsrender.min.js"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+</div>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff">&lt;</span><span style="color: #800000">body</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="Tmpl"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">Name: {{:name}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">Age: {{:age}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> data </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">van</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">age</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">18</span><span style="background-color: #f5f5f5; color: #000000">
+        }
+
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html2 </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#Tmpl</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(data);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).append(html2);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+<span style="color: #0000ff">&lt;/</span><span style="color: #800000">body</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>传入一个多层级对象data</p>
+<div class="cnblogs_code"><img id="code_img_closed_5a38cfb2-7e11-4d8c-834e-95da200f445e" class="code_img_closed" src="./JsRender 前端渲染模板基础_files/ContractedBlock.gif" alt=""><img id="code_img_opened_5a38cfb2-7e11-4d8c-834e-95da200f445e" class="code_img_opened" style="display: none" src="./JsRender 前端渲染模板基础_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_5a38cfb2-7e11-4d8c-834e-95da200f445e" class="cnblogs_code_hide">
+<pre> <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="Tmpl"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">Name: {{:Info.name}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">Age: {{:Info.age}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:Details.Address}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:Details.Hobby.TableTennis}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> data </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">Info</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: {
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">van</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">age</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">18</span><span style="background-color: #f5f5f5; color: #000000">
+            },
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">Details</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: {
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">Hobby</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: {
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">TableTennis</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">I like Table Tennis</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">Basketball</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">I like Basketball</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">
+                },
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">Address</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">My address</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">
+            }
+        }
+
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html2 </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#Tmpl</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(data);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).append(html2);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>如上所见，不管传入的对象有多复杂，都能按照层级去找到属性，只是把最外层的对象名 data 省略掉了</p>
+<p><strong>启用与定义全局变量的标签<span style="background-color: #ffff00">{{*}}与 {{*:}}</span></strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000">{{*count = 1}}
+</span><span style="color: #0000ff">&lt;</span><span style="color: #800000">p</span><span style="color: #0000ff">&gt;</span>{{*:count + 2}}<span style="color: #0000ff">&lt;/</span><span style="color: #800000">p</span><span style="color: #0000ff">&gt;</span><span style="color: #000000">
+
+$.views.settings.allowCode(true);</span></pre>
+</div>
+<p>首先需要执行$.views.settings.allowCode(true);，把设置开启，然后使用{{*count = 1}}定义一个变量，然后再用{{*:count}}引用变量。当然，jsrender也提供了只有某一个模板支持全局变量的设置方式</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000">var tmpl = $.templates({
+    markup: "#myTemplate",
+    allowCode: true
+  });</span></pre>
+</div>
+<p><strong>&nbsp;注释标签 {{!--&nbsp; &nbsp; --}}</strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff">&lt;</span><span style="color: #800000">p</span><span style="color: #0000ff">&gt;</span>{{!--:Details.Address--}}<span style="color: #0000ff">&lt;/</span><span style="color: #800000">p</span><span style="color: #0000ff">&gt;</span></pre>
+</div>
+<p><strong>条件判断语句&nbsp;<strong>{{if condition}} ... {else condition} ... {{else}}... {{/if}}</strong></strong></p>
+<p>jsrender 的 if else 语法跟正常的代码逻辑还是有点区别的，当只有两种情况的时候，是没有区别的，就是 if else</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff">&lt;</span><span style="color: #800000">body</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">姓名: {{:name}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+            我是：
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">if</span><span style="background-color: #f5f5f5; color: #000000"> info.age </span><span style="background-color: #f5f5f5; color: #000000">&gt;=</span> <span style="background-color: #f5f5f5; color: #000000">18</span><span style="background-color: #f5f5f5; color: #000000">}}
+            成年人
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">else</span><span style="background-color: #f5f5f5; color: #000000">}}
+            未成年
+            {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">if}}</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> data </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">van</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">,
+            info: {
+                </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">age</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">22</span><span style="background-color: #f5f5f5; color: #000000">
+            }
+        };
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(data);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+<span style="color: #0000ff">&lt;/</span><span style="color: #800000">body</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>但是当有多种情况的时候，也就是 if ... else if ... else if ... else 的时候，可是jsrender并没有 else if 这样的写法，它会根据情况来判断，如果是多重情况，它会自动把 else 当做 else if来使用</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>  <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">姓名: {{:name}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">if</span><span style="background-color: #f5f5f5; color: #000000"> info.age </span><span style="background-color: #f5f5f5; color: #000000">&gt;=</span> <span style="background-color: #f5f5f5; color: #000000">18</span><span style="background-color: #f5f5f5; color: #000000">}}
+              大于18岁
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">else</span><span style="background-color: #f5f5f5; color: #000000"> info.age </span><span style="background-color: #f5f5f5; color: #000000">&gt;=</span> <span style="background-color: #f5f5f5; color: #000000">16</span><span style="background-color: #f5f5f5; color: #000000">&amp;&amp;</span><span style="background-color: #f5f5f5; color: #000000">info.age </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span> <span style="background-color: #f5f5f5; color: #000000">18</span><span style="background-color: #f5f5f5; color: #000000">}}
+              大于16岁小于18岁
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">else</span><span style="background-color: #f5f5f5; color: #000000">}}
+              未成年
+            {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">if}}</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>if&nbsp; else 除了以 {{if}}....{{/if}} 的形式使用，也可以使用 {{if xxx=true ... /}} 自闭合的形式，而且还可以引入模板，也可以混着用</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">姓名: {{:name}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #ffff00"><span style="color: #000000">
+            {{</span><span style="color: #0000ff">if</span><span style="color: #000000"> info.age </span><span style="color: #000000">&gt;=</span> <span style="color: #000000">18</span><span style="color: #000000"> tmpl</span><span style="color: #000000">=</span><span style="color: #000000">"</span><span style="color: #000000">#tmp2</span><span style="color: #000000">"</span> <span style="color: #000000">/</span><span style="color: #000000">}}                                     </span></span>
+<span style="background-color: #00ff00"><span style="color: #000000">            {{</span><span style="color: #0000ff">if</span><span style="color: #000000"> name</span><span style="color: #000000">==</span><span style="color: #000000">"</span><span style="color: #000000">van</span><span style="color: #000000">"</span><span style="color: #000000">}}
+              帅～
+            {{</span><span style="color: #0000ff">else</span><span style="color: #000000">}}
+              依旧帅～
+            {{</span><span style="color: #000000">/</span><span style="color: #000000">if}}</span></span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp2"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">h3</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">大于18岁</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">h3&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>使用&nbsp;&nbsp;<strong>{{for}} ... {{/for}}</strong> 循环对数据进行循环或对对象进行遍历</strong></p>
+<p>jsrender的for循环会默认把数组或对象的第一层循环遍历掉，我们只要管里面的数据就行了，而且使用了循环之后的模板也可以单独写成一个模板，在for循环中引用,循环数组的时候可以使用 <span style="background-color: #ffff00">{{:#index}}</span> 来获取当前数组的下标，并且index是从0开始的，提醒：尽量使用<span style="background-color: #ffff00">#getIndex()</span>获取索引，避免使用#index，除非你的应用足够简单。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> data 对象已经被默认遍历，所以属性前不用加 data. 就可访问到 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">h3</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">there have {{:kind}} kinds animal</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">h3&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">and the cow price is {{:price.cow}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">and the cow price is {{:price.pig}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 也可以这样对对象进行for循环 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+        {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> price}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">and the cow price is {{:cow}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">and the cow price is {{:pig}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">ul</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+            {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 对对象数组进行循环 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> list}}
+            </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">li</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:<span style="background-color: #ffff00">#getIndex() </span></span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}. </span><span style="background-color: #f5f5f5; color: #0000ff">this</span><span style="background-color: #f5f5f5; color: #000000"> animal call {{:name}}, and has {{:count}}, it has {{:foot}} foots</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">li&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">            {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+<span style="background-color: #f5f5f5; color: #000000">            {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 也可以使用模板引入作为循环的模板 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> list tmpl</span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp2</span><span style="background-color: #f5f5f5; color: #000000">"</span> <span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">}}</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">ul&gt;</span>
+
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp2"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">li</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:<span style="background-color: #ffff00">#getIndex() </span></span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}. </span><span style="background-color: #f5f5f5; color: #0000ff">this</span><span style="background-color: #f5f5f5; color: #000000"> animal call {{:name}}, and has {{:count}}, it has {{:foot}} foots</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">li&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> data </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">kind</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">4</span><span style="background-color: #f5f5f5; color: #000000">,
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">price</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: {
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">cow</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">19999</span><span style="background-color: #f5f5f5; color: #000000">,
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">pig</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">1888</span><span style="background-color: #f5f5f5; color: #000000">
+            },
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">list</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: [
+                {
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">cow</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">count</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">4</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">foot</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">4</span><span style="background-color: #f5f5f5; color: #000000">
+                },
+                {
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">chicken</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">count</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">5</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">foot</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">2</span><span style="background-color: #f5f5f5; color: #000000">
+                }
+            ]
+        }
+
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(data);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>嵌套for</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre> <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000">}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">li</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+            Name:{{:name}}
+            </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">ul</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+                {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> hobbies}}
+                </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">li</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:#getIndex() </span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}</span><span style="background-color: #f5f5f5; color: #000000">-</span><span style="background-color: #f5f5f5; color: #000000">{{:#data}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">li&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">                {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">ul&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">li&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> data </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> [
+          { name: </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">tom</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, hobbies: [</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">篮球</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">足球</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">] },
+          { name: </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">jack</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, hobbies: [</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">篮球</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">橄榄球</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">] },
+          { name: </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">lucy</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, hobbies: [</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">游泳</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">羽毛球</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">] }
+        ];
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(data);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>嵌套循环使用参数访问父级数据</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre> <span style="color: #0000ff">&lt;</span><span style="color: #800000">table </span><span style="color: #ff0000">border</span><span style="color: #0000ff">="1"</span><span style="color: #0000ff">&gt;</span>
+        <span style="color: #0000ff">&lt;</span><span style="color: #800000">thead</span><span style="color: #0000ff">&gt;</span>
+            <span style="color: #0000ff">&lt;</span><span style="color: #800000">tr</span><span style="color: #0000ff">&gt;</span>
+                <span style="color: #0000ff">&lt;</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>序号<span style="color: #0000ff">&lt;/</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>
+                <span style="color: #0000ff">&lt;</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>姓名<span style="color: #0000ff">&lt;/</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>
+                <span style="color: #0000ff">&lt;</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>年龄<span style="color: #0000ff">&lt;/</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>
+                <span style="color: #0000ff">&lt;</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>家庭成员<span style="color: #0000ff">&lt;/</span><span style="color: #800000">th</span><span style="color: #0000ff">&gt;</span>
+            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">tr</span><span style="color: #0000ff">&gt;</span>
+        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">thead</span><span style="color: #0000ff">&gt;</span>
+        <span style="color: #0000ff">&lt;</span><span style="color: #800000">tbody </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">tbody</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">table</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000">}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">tr</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">td</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+                {{:#getIndex() </span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}
+            </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">td&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">td</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:name}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">td&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">td</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:age}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">td&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">td</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+                {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 使用for循环时，可以在后边添加参数，参数必须以</span><span style="background-color: #f5f5f5; color: #000000">~</span><span style="background-color: #f5f5f5; color: #000000">开头，多个参数用空格分隔 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+                {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 通过参数，我们缓存了父级的数据，在子循环中访问参数，就可以间接访问父级数据 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+                {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> family </span><span style="background-color: #f5f5f5; color: #000000">~</span><span style="background-color: #f5f5f5; color: #000000">parentIndex</span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000">#getIndex() </span><span style="background-color: #f5f5f5; color: #000000">~</span><span style="background-color: #f5f5f5; color: #000000">parentName</span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000">name </span><span style="background-color: #f5f5f5; color: #000000">~</span><span style="background-color: #f5f5f5; color: #000000">parnetAge</span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000">age}}
+                </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">b</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:</span><span style="background-color: #f5f5f5; color: #000000">~</span><span style="background-color: #f5f5f5; color: #000000">parentIndex </span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}.{{:#getIndex() </span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">b&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">                {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #ffff00; color: #000000"> #data相当于this </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+                {{:</span><span style="background-color: #f5f5f5; color: #000000">~</span><span style="background-color: #f5f5f5; color: #000000">parentName}}的<span style="background-color: #ffff00">{{:#data}}</span>
+                {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">td&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">tr&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> data </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> [
+            {
+                name: </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">张三</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">,
+                age: </span><span style="background-color: #f5f5f5; color: #000000">3</span><span style="background-color: #f5f5f5; color: #000000">,
+                family: [</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">爸爸</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">妈妈</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">哥哥</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">]
+            },
+            {
+                name: </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">李四</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">,
+                age: </span><span style="background-color: #f5f5f5; color: #000000">4</span><span style="background-color: #f5f5f5; color: #000000">,
+                family: [</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">爷爷</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">奶奶</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">, </span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">叔叔</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">]
+            }
+        ];
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(data);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>当循环数组或者遍历对象的时候，如果在 {{for}} {{/for}} 中间加上 {{else}}，还可以对遍历的对象进行判断，如果该对象或者属性不存在，那么就显示其他的内容。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000">{{!-- 遍历的时候顺便判断merbers是否存在 --}}
+{{for members}}
+    </span><span style="color: #0000ff">&lt;</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>{{:name}}<span style="color: #0000ff">&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span><span style="background-color: #ffff00"><span style="color: #000000">
+{{else}} 
+    </span><span style="color: #0000ff">&lt;</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>No members!<span style="color: #0000ff">&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span></span><span style="color: #000000">
+{{/for}}</span></pre>
+</div>
+<p><strong>&nbsp;使用 {{props}} 遍历对象并且获取到对象的key/value</strong></p>
+<p>当我们遍历对象需要使用到对象的key值时，使用props可以获取到key/value值，而且也可以在for循环中进行对象的遍历,在数据循环中获取可以使用<span style="background-color: #ffff00">#data</span>获取到当前的对象，当然也可以使用引入外部模板来当做循环模板。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 简单的对象遍历 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+        {{props price}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">the {{:key}} price is {{:prop}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">props}}</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">ul</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+            {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 在数据循环中再进行对象的遍历，病获取到key</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">prop --}}</span>
+<span style="background-color: #f5f5f5; color: #000000">            {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> list}}
+            </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">li</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+                {{:#index </span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}.
+                {{props #data}}
+                </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">b</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:key}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">b&gt; is {{&gt;prop}}</span>
+<span style="background-color: #f5f5f5; color: #000000">                {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">props}}</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">li&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">            {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+<span style="background-color: #f5f5f5; color: #000000">
+            {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 也可以使用模板引入作为循环的模板 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+            {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> list tmpl</span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp2</span><span style="background-color: #f5f5f5; color: #000000">"</span> <span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">}}</span>
+
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">ul&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp2"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">li</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+            {{:#index </span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}.
+            {{props #data}}
+            </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">b</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:key}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">b&gt; is {{&gt;prop}}</span>
+<span style="background-color: #f5f5f5; color: #000000">            {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">props}}</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">li&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> data </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">kind</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">4</span><span style="background-color: #f5f5f5; color: #000000">,
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">price</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: {
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">cow</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">19999</span><span style="background-color: #f5f5f5; color: #000000">,
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">pig</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">1888</span><span style="background-color: #f5f5f5; color: #000000">
+            },
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">list</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: [
+                {
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">cow</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">count</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">4</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">foot</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">4</span><span style="background-color: #f5f5f5; color: #000000">
+                },
+                {
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">chicken</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">count</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">5</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">foot</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">2</span><span style="background-color: #f5f5f5; color: #000000">
+                }
+            ]
+        }
+
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(data);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>当然，也可以在prop遍历对象的时候对对象进行判断，只要在prop遍历中加入 {{else}}，如果对象为undefined或对象为空，那么就执行else</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000">{{props address}}
+    </span><span style="color: #0000ff">&lt;</span><span style="color: #800000">b</span><span style="color: #0000ff">&gt;</span>{{:key}}:<span style="color: #0000ff">&lt;/</span><span style="color: #800000">b</span><span style="color: #0000ff">&gt;</span>{{:prop}} <span style="color: #0000ff">&lt;</span><span style="color: #800000">br </span><span style="color: #0000ff">/&gt;</span><span style="color: #000000">
+{{else}} 
+    The address is blank (no properties)!
+{{/props}}</span></pre>
+</div>
+<p><strong>使用 {{include}} 引入外部模板或者改变模板的上下文</strong></p>
+<p>虽然我们可以在 {{for}} 循环中或者 {{if}} 标签中直接引入模板，但是 {{include}} 引入模板才是符合我们认知的，应该什么标签干什么事</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre> <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #0000ff">if</span> <span style="background-color: #f5f5f5; color: #0000ff">case</span> <span style="background-color: #f5f5f5; color: #000000">==</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}
+        <span style="background-color: #ffff00">{{include tmpl</span></span><span style="background-color: #ffff00"><span style="color: #000000">=</span><span style="color: #000000">"</span><span style="color: #000000">#tmp1</span><span style="color: #000000">"</span> <span style="color: #000000">/</span><span style="color: #000000">}}</span></span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #0000ff">else</span> <span style="background-color: #f5f5f5; color: #0000ff">case</span> <span style="background-color: #f5f5f5; color: #000000">==</span> <span style="background-color: #f5f5f5; color: #000000">2</span><span style="background-color: #f5f5f5; color: #000000">}}
+        <span style="background-color: #ffff00">{{include tmpl</span></span><span style="background-color: #ffff00"><span style="color: #000000">=</span><span style="color: #000000">"</span><span style="color: #000000">#tmp2</span><span style="color: #000000">"</span> <span style="color: #000000">/</span><span style="color: #000000">}}</span></span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #0000ff">else</span><span style="background-color: #f5f5f5; color: #000000">}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">no data</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">if}}</span>
+ <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>使用{{include}}标签引入模板显得比较语义化，虽然并没有什么差别。除了引入模板，{{include}}还可以在引入模板的同时引入对象或者数组，来改变所引入模板的上下文</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre> <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #0000ff">if</span> <span style="background-color: #f5f5f5; color: #0000ff">case</span> <span style="background-color: #f5f5f5; color: #000000">==</span> <span style="background-color: #f5f5f5; color: #000000">1</span><span style="background-color: #f5f5f5; color: #000000">}}
+        {{include <span style="background-color: #ffff00">data</span> tmpl</span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp1</span><span style="background-color: #f5f5f5; color: #000000">"</span> <span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">}}</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #0000ff">else</span> <span style="background-color: #f5f5f5; color: #0000ff">case</span> <span style="background-color: #f5f5f5; color: #000000">==</span> <span style="background-color: #f5f5f5; color: #000000">2</span><span style="background-color: #f5f5f5; color: #000000">}}
+        {{include <span style="background-color: #ffff00">data1</span> tmpl</span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp2</span><span style="background-color: #f5f5f5; color: #000000">"</span> <span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">}}</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #0000ff">else</span><span style="background-color: #f5f5f5; color: #000000">}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">no data</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">if}}</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp1"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #f5f5f5; color: #000000">
+        {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> for循环会默认取到传进来的对象 使用data.title是访问不到的 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+        {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 传进来的对象必须手动循环 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+        {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000">}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">h3</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:title}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">h3&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:text}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp2"</span><span style="color: #0000ff">&gt;</span><span style="background-color: #ffff00"><span style="color: #000000">
+        {{</span><span style="color: #000000">!--</span><span style="color: #000000"> :length 可以获取当前数组的长度 </span><span style="color: #000000">--</span></span><span style="background-color: #f5f5f5; color: #000000"><span style="background-color: #ffff00">}}</span>
+        {{:length}}
+        {{</span><span style="background-color: #f5f5f5; color: #000000">!--</span><span style="background-color: #f5f5f5; color: #000000"> 传进来的数组必须手动循环 </span><span style="background-color: #f5f5f5; color: #000000">--</span><span style="background-color: #f5f5f5; color: #000000">}}
+        {{</span><span style="background-color: #f5f5f5; color: #0000ff">for</span><span style="background-color: #f5f5f5; color: #000000"> #data}}
+        </span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">h3</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:title}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">h3&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:text}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+<span style="background-color: #f5f5f5; color: #000000">        {{</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">for}}</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> condition </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">case</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">2</span><span style="background-color: #f5f5f5; color: #000000">,
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #ffff00; color: #000000">data</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: {
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">title</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">this is first case</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">text</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">case one text</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">
+            },
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #ffff00; color: #000000">data1</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: [
+                {
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">title</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">i am outer fisrt title</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">text</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">it is me,diffrent light</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">
+                },
+                {
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">title</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">i am outer second title</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+                    </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">text</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">it is me,diffrent light</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">
+                }
+            ]
+        };
+
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(condition);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>使用 {{converters:value}} 把value转换成所需要的格式</strong></p>
+<div>
+<div>当后端给我们返回的数据格式跟页面所展示的格式不一样的时候，我们就需要对数据进行转换。比如说后端返回时间的毫秒数，可是页面却要显示 年-月-日 的格式或者是后端返回小写的字符，页面却要显示成大写的字符，这个时候转换器就派上用场了。<br>
+jsrender提供了api <span style="background-color: #ffff00">$.views.converters()</span>来注册转换方法。</div>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>    <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">div</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">h3</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #ffff00; color: #000000">{{upper:name}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">h3&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:age}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">div&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> condition </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">name</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">van</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+            </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">age</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">: </span><span style="background-color: #f5f5f5; color: #000000">20</span><span style="background-color: #f5f5f5; color: #000000">
+        };
+
+        $.views.converters({
+            <span style="background-color: #ffff00">upper</span>: </span><span style="background-color: #f5f5f5; color: #0000ff">function</span><span style="background-color: #f5f5f5; color: #000000"> (val) {
+                </span><span style="background-color: #f5f5f5; color: #0000ff">return</span><span style="background-color: #f5f5f5; color: #000000"> val.toUpperCase();</span><span style="background-color: #f5f5f5; color: #008000">//</span><span style="background-color: #f5f5f5; color: #008000">转大写</span>
+<span style="background-color: #f5f5f5; color: #000000">            }
+        })
+
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(condition);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><strong>使用 {{:~helper(value)}} 对传入的参数value做处理</strong></p>
+当我们拿到的数据不符合展示的需求是，我们需要对数据进行处理，那么我们可以使用辅助函数，把原始值当成参数传入，返回我们需要的数据。<br>jsrender提供了<span style="background-color: #ffff00">$.views.helper()</span>方法来注册辅助函数。并使用~当前缀来调用辅助函数。<br>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre> <span style="color: #0000ff">&lt;</span><span style="color: #800000">div </span><span style="color: #ff0000">id</span><span style="color: #0000ff">="result"</span><span style="color: #0000ff">&gt;&lt;/</span><span style="color: #800000">div</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script </span><span style="color: #ff0000">type</span><span style="color: #0000ff">="text/x-jsrender"</span><span style="color: #ff0000"> id</span><span style="color: #0000ff">="tmp"</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">div</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">h3</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #ffff00"><span style="color: #000000">{{:</span><span style="color: #000000">~</span><span style="color: #000000">hello(firstName, lastName)}}</span></span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">h3&gt;</span>
+            <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">p</span><span style="background-color: #f5f5f5; color: #000000">&gt;</span><span style="background-color: #f5f5f5; color: #000000">{{:age}}</span><span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">p&gt;</span>
+        <span style="background-color: #f5f5f5; color: #000000">&lt;</span><span style="background-color: #f5f5f5; color: #000000">/</span><span style="background-color: #f5f5f5; color: #000000">div&gt;</span>
+    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+
+    <span style="color: #0000ff">&lt;</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span>
+        <span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> info </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> {
+            firstName: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">van</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+            lastName: </span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">wu</span><span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">,
+            age: </span><span style="background-color: #f5f5f5; color: #000000">18</span><span style="background-color: #f5f5f5; color: #000000">
+        };
+
+        $.views.helpers({
+            <span style="background-color: #ffff00">hello</span>: </span><span style="background-color: #f5f5f5; color: #0000ff">function</span><span style="background-color: #f5f5f5; color: #000000"> (fisrtName, lastName) {
+                </span><span style="background-color: #f5f5f5; color: #0000ff">return</span> <span style="background-color: #f5f5f5; color: #000000">'</span><span style="background-color: #f5f5f5; color: #000000">Hello </span><span style="background-color: #f5f5f5; color: #000000">'</span> <span style="background-color: #f5f5f5; color: #000000">+</span><span style="background-color: #f5f5f5; color: #000000"> fisrtName </span><span style="background-color: #f5f5f5; color: #000000">+</span> <span style="background-color: #f5f5f5; color: #000000">'</span> <span style="background-color: #f5f5f5; color: #000000">'</span> <span style="background-color: #f5f5f5; color: #000000">+</span><span style="background-color: #f5f5f5; color: #000000"> lastName;
+            }
+        })
+
+        </span><span style="background-color: #f5f5f5; color: #0000ff">var</span><span style="background-color: #f5f5f5; color: #000000"> html </span><span style="background-color: #f5f5f5; color: #000000">=</span><span style="background-color: #f5f5f5; color: #000000"> $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#tmp</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).render(info);
+        $(</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">#result</span><span style="background-color: #f5f5f5; color: #000000">"</span><span style="background-color: #f5f5f5; color: #000000">).html(html);
+    </span><span style="color: #0000ff">&lt;/</span><span style="color: #800000">script</span><span style="color: #0000ff">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./JsRender 前端渲染模板基础_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>以上就是JsRender的基本用法，下篇会学习JsRender的一些常用API。</p>
+<p>&nbsp;</p>
+<p>参考：https://www.cnblogs.com/duanyue/p/6899103.html</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;https://www.cnblogs.com/Leo_wl/p/5898142.html</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;https://www.jianshu.com/p/3151d2256410</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/vanblog/category/1189434.html" target="_blank">JsRender.js</a></div>
+<div id="EntryTag">标签: <a href="https://www.cnblogs.com/vanblog/tag/JsRender/">JsRender</a>, <a href="https://www.cnblogs.com/vanblog/tag/jsrender.js/">jsrender.js</a>, <a href="https://www.cnblogs.com/vanblog/tag/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF/">前端渲染模板</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(8671025,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;dd488a25-0760-4134-a530-08d4ef52ecb5&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./JsRender 前端渲染模板基础_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./JsRender 前端渲染模板基础_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/vanblog/" target="_blank"><img src="./JsRender 前端渲染模板基础_files/20170830122027.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/vanblog/">天空划落</a><br>
+            <a href="http://home.cnblogs.com/u/vanblog/followees">关注 - 5</a><br>
+            <a href="http://home.cnblogs.com/u/vanblog/followers">粉丝 - 2</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;dd488a25-0760-4134-a530-08d4ef52ecb5&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(8671025,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+    <div class="buryit" onclick="votePost(8671025,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/vanblog/p/8602990.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/vanblog/p/8602990.html" title="发布于2018-03-20 17:51">Vue.js 基础快速入门</a><br><a href="https://www.cnblogs.com/vanblog/p/8676881.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/vanblog/p/8676881.html" title="发布于2018-03-30 17:43">JsRender 前端渲染模板常用API学习</a><br></div>
+</div>
+
+
+	<div class="postDesc"><img src="./JsRender 前端渲染模板基础_files/speech.gif" align="absmiddle">&nbsp;posted on <span id="post-date">2018-03-30 10:49</span> <a href="https://www.cnblogs.com/vanblog/">天空划落</a> 阅读(<span id="post_view_count">7816</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=8671025" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/vanblog/p/8671025.html#" onclick="AddToWz(8671025);return false;">收藏</a></div>
+</div>
+<script type="text/javascript">var allowComments=true,cb_blogId=377301,cb_entryId=8671025,cb_blogApp=currentBlogApp,cb_blogUserGuid='dd488a25-0760-4134-a530-08d4ef52ecb5',cb_entryCreatedDate='2018/3/30 10:49:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=false;</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<br>
+<div class="feedback_area_title">评论</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<span style="color:#006699"><a href="https://www.cnblogs.com/vanblog/p/8671025.html#3962409" class="layer">#1楼</a><a name="3962409" id="comment_anchor_3962409"></a><span id="comment-maxId" style="display:none;">3962409</span><span id="comment-maxDate" style="display:none;">2018/4/27 13:35:53</span></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<div style="padding-left:30px;"><img src="./JsRender 前端渲染模板基础_files/arrow.gif" align="absmiddle">&nbsp;<a id="a_comment_author_3962409" class="feedbackmanagelink" href="https://www.cnblogs.com/woloveprogram/" target="_blank">我_爱编程</a> <a href="http://msg.cnblogs.com/send/%E6%88%91_%E7%88%B1%E7%BC%96%E7%A8%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a><font style="color:gray;font-size:10px;font-weight:normal;"> |  <span class="comment_date">2018-04-27 13:35</span></font>
+				</div>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3962409" class="blog_comment_body">Mark～</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3962409,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3962409,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/vanblog/p/8671025.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/vanblog/p/8671025.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-工控&#39;)">【推荐】超50万C++/C#源码: 大型实时仿真HMI组态CAD\GIS图形源码！</a><br></div>
+<div id="opt_under_post"></div>
+<script async="async" src="./JsRender 前端渲染模板基础_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;" data-google-query-id="CM7Kr-iO4eACFcyzlgod_8EAzA"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1" data-load-complete="true" src="./JsRender 前端渲染模板基础_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/subtract/p/4496975.html" target="_blank" onclick="clickRecomItmem(undefined,&#39;undefined&#39;)">Jquery模板-----JsRender</a><br>·  <a href="https://www.cnblogs.com/4littleProgrammer/p/4808221.html" target="_blank" onclick="clickRecomItmem(undefined,&#39;undefined&#39;)">knockoutJS学习笔记02：jsRender模板引擎</a><br>·  <a href="https://www.cnblogs.com/zhouto/p/4484014.html" target="_blank" onclick="clickRecomItmem(undefined,&#39;undefined&#39;)">Visro 应用的前端模板工具介绍 -JsRender</a><br>·  <a href="https://www.cnblogs.com/yexiaochai/p/4463420.html" target="_blank" onclick="clickRecomItmem(undefined,&#39;undefined&#39;)">【大前端之前后分离01】JS前端渲染VS服务器端渲染</a><br>·  <a href="https://www.cnblogs.com/lekko/p/5888962.html" target="_blank" onclick="clickRecomItmem(undefined,&#39;undefined&#39;)">前端渲染利器——JsRender入门</a><br></div></div>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="COfSruiO4eACFQ2flgodrW0Cmw"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none; width: 468px; height: 60px;"></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/620709/" target="_blank">Skyrim Together被控偷窃SKSE代码</a><br> ·  <a href="https://news.cnblogs.com/n/620710/" target="_blank">吊打Magic Leap，微软HoloLens 2不只为炫技</a><br> ·  <a href="https://news.cnblogs.com/n/620707/" target="_blank">微软沈向洋：你给自己的定位是什么，你就会得到什么</a><br> ·  <a href="https://news.cnblogs.com/n/620705/" target="_blank">没有“开工大吉”的共享单车小镇：短短一年换了人间</a><br> ·  <a href="https://news.cnblogs.com/n/620704/" target="_blank">倪光南：网信领域的国产化很可能"先进替代落后"</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+ if(enablePostBottom()) {
+    codeHighlight();
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverT2();
+    deliverC1();
+    deliverC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);  
+}
+</script>
+</div>
+
+    
+		</div>
+	</div>
+	</div>
+	<!-- left ends -->
+	<!-- right starts -->
+	<div id="right">
+		<!-- 右侧工具部分 -->
+		<div id="right_content">
+	
+			
+<!--done-->
+<h1 class="listtitle" style="padding-top:14px;padding-left:42px;">公告</h1>
+<div class="newsItem">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/vanblog/">天空划落</a><br>园龄：<a href="https://home.cnblogs.com/u/vanblog/" title="入园时间：2017-08-30">1年6个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/vanblog/followers/">2</a><br>关注：<a href="https://home.cnblogs.com/u/vanblog/followees/">5</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;dd488a25-0760-4134-a530-08d4ef52ecb5&#39;)">+加关注</a></div><script>getFollowStatus('dd488a25-0760-4134-a530-08d4ef52ecb5')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+	
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/02/01&#39;);return false;">&lt;</a></td><td align="center">2019年3月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/04/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">24</td><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalTodayDay" align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+				<div id="leftcontentcontainer">
+					<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/vanblog/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/vanblog/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/vanblog/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/vanblog/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/vanblog/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_categories">
+<!--done-->
+
+		<h1 class="catListTitle">随笔分类</h1>
+		
+				<div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_0" class="listitem" href="https://www.cnblogs.com/vanblog/category/1082196.html">Asp.Net MVC</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_1" class="listitem" href="https://www.cnblogs.com/vanblog/category/1097167.html">C#</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_2" class="listitem" href="https://www.cnblogs.com/vanblog/category/1083875.html">Entity Framework(1)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_3" class="listitem" href="https://www.cnblogs.com/vanblog/category/1179447.html">Ibatis.Net(9)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_4" class="listitem" href="https://www.cnblogs.com/vanblog/category/1188635.html">JavaScript,HTML,CSS</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_5" class="listitem" href="https://www.cnblogs.com/vanblog/category/1189434.html">JsRender.js(2)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_6" class="listitem" href="https://www.cnblogs.com/vanblog/category/1195763.html">MVC 1和MVC 2 </a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_7" class="listitem" href="https://www.cnblogs.com/vanblog/category/1181513.html">Vue.js(1)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_8" class="listitem" href="https://www.cnblogs.com/vanblog/category/1189438.html">WCF</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_9" class="listitem" href="https://www.cnblogs.com/vanblog/category/1189436.html">WebApi</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_10" class="listitem" href="https://www.cnblogs.com/vanblog/category/1189437.html">WebService</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_11" class="listitem" href="https://www.cnblogs.com/vanblog/category/1189439.html">服务器(1)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_12" class="listitem" href="https://www.cnblogs.com/vanblog/category/1090088.html">其它(3)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_13" class="listitem" href="https://www.cnblogs.com/vanblog/category/1189440.html">数据库</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_0_Link_14" class="listitem" href="https://www.cnblogs.com/vanblog/category/1094029.html">微信开发(1)</a>
+				</div>
+			
+				</div>
+			
+	
+		<h1 class="catListTitle">随笔档案</h1>
+		
+				<div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_1_Link_0" class="listitem" href="https://www.cnblogs.com/vanblog/archive/2018/09.html">2018年9月 (2)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_1_Link_1" class="listitem" href="https://www.cnblogs.com/vanblog/archive/2018/08.html">2018年8月 (1)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_1_Link_2" class="listitem" href="https://www.cnblogs.com/vanblog/archive/2018/04.html">2018年4月 (8)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_1_Link_3" class="listitem" href="https://www.cnblogs.com/vanblog/archive/2018/03.html">2018年3月 (6)</a>
+				</div>
+			
+				<div class="catList">
+				 <a id="CatList_LinkList_1_Link_4" class="listitem" href="https://www.cnblogs.com/vanblog/archive/2017/10.html">2017年10月 (1)</a>
+				</div>
+			
+				</div>
+			
+	
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/vanblog/p/8708030.html#3962525">1. Re:Ibatis.Net 执行存储过程学习(八)</a></li>
+        <li class="recent_comment_body">Perfect.</li>
+        <li class="recent_comment_author">--我_爱编程</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/vanblog/p/8582477.html#3962453">2. Re:Ibatis.Net 各种配置说明学习(二)</a></li>
+        <li class="recent_comment_body">Mark</li>
+        <li class="recent_comment_author">--我_爱编程</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/vanblog/p/8579009.html#3962423">3. Re:Ibatis.Net 入门学习(一)</a></li>
+        <li class="recent_comment_body">条理清晰，例子中的步骤简单明了。 mark!!!</li>
+        <li class="recent_comment_author">--我_爱编程</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/vanblog/p/8671025.html#3962409">4. Re:JsRender 前端渲染模板基础学习</a></li>
+        <li class="recent_comment_body">Mark～</li>
+        <li class="recent_comment_author">--我_爱编程</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/vanblog/p/8671025.html">1. JsRender 前端渲染模板基础学习(7816)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/9628581.html">2. IIS7配置HTTPS+默认访问https路径(907)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/7543793.html">3. MVC5使用EF6 Code First--创建EF数据模型(一)(707)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/7649565.html">4. 微信支付之企业付款--微信商户后台没有“企业付款到零钱”解决方案(649)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/8676881.html">5. JsRender 前端渲染模板常用API学习(187)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/vanblog/p/8579009.html">1. Ibatis.Net 入门学习(一)(1)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/8582477.html">2. Ibatis.Net 各种配置说明学习(二)(1)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/8671025.html">3. JsRender 前端渲染模板基础学习(1)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/8708030.html">4. Ibatis.Net 执行存储过程学习(八)(1)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/vanblog/p/8579009.html">1. Ibatis.Net 入门学习(一)(1)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/8583522.html">2. Ibatis.Net 各类的作用说明学习(三)(1)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/8671025.html">3. JsRender 前端渲染模板基础学习(1)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/8582477.html">4. Ibatis.Net 各种配置说明学习(二)(1)</a></li><li><a href="https://www.cnblogs.com/vanblog/p/7543793.html">5. MVC5使用EF6 Code First--创建EF数据模型(一)(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+				</div>
+			
+		</div>
+		<!-- //右侧工具部分 -->
+	</div>
+	<!-- right ends -->
+	<div class="clear"></div>
+</div>
+<div id="footer">
+<!--done-->
+Copyright ©2019 天空划落</div>
+
+
+
+
+<iframe id="google_osd_static_frame_1649363182334" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./JsRender 前端渲染模板基础_files/saved_resource(1).html"></iframe></body></html>

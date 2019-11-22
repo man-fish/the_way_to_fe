@@ -1,0 +1,16 @@
+<script>
+let promise = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            console.log("love")
+            resolve("loveEnd")
+        },1000)
+    })
+    promise.then((data)=>{
+        console.log(data)
+    },(err)=>{
+        console.log(err)
+    })
+    // 再弄一个请求套请求
+
+</script>
+

@@ -1,0 +1,14 @@
+JSON 类库使用的jar包
+  * json-lib-2.3-jdk15.jar   json类库的核心包
+  * 其他的jar包
+    * ezmorph-1.0.6.jar   能完成bean的复制等功能
+    * morph-1.1.1.jar
+    * morph-sandbox-1.1.1.jar
+        也是完成bean与bean之间的复制
+
+
+    * 使用apatche的jar包
+        * commons-beanutils-1.8.3.jar(复制)
+        * commons-collections-3.2.1.jar(对java.util的增强)
+        * commons-lang-2.5.jar(对java.lang的增强)
+        * commons-logging-1.1.1.jar(日志 )

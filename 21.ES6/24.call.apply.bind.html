@@ -1,0 +1,17 @@
+<script>
+    ///Function
+    var obj = {name:'wangbo'}
+    function consol(data){
+        console.log(this+data)
+    }
+    consol.call(obj)
+    consol.apply(obj,[33])//apply和call在调用的时候会更改this指向
+    consol.bind(obj,44)()//bind会返回一个更改了this指向的函数
+
+    console.log(Object.prototype.toString.call(String,555))
+    console.log((111).toString())
+
+    setTimeout(function(){
+        console.log(this)
+    }.bind(obj),1000)//bind一般用于计时器传this
+</script>
