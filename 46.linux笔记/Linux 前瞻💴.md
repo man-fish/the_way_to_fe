@@ -1,10 +1,10 @@
 # Linux 前瞻💴
 
-### linux发展史⏰
+## linux发展史⏰
 
 ![linux发展史](F:\我的笔记\image\linux发展史.png)
 
-### linux特点🥓
+## linux特点🥓
 
 ![linux特点](F:\我的笔记\image\linux特点.png)
 
